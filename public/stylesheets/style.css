@@ -1,0 +1,101 @@
+body {
+  font: 14px "Lato", sans-serif;
+  margin-top: 30px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.addverbcontainer{
+	max-width: 500px;
+}
+form.addverb{
+	margin: 0 auto;
+}
+
+.addverbcontainer #password{
+	margin-bottom: 20px;
+}
+.addverbcontainer h1{
+	font-family: 'Montserrat',sans-serif;
+	font-weight: 700;
+	text-align: center;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+#game{
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: center;
+	/*background: #f2f2f2;*/
+}
+
+#game #infinitive{
+	font-size: 30px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	text-transform: capitalize;
+	margin-bottom: 20px;
+}
+
+#game .game-form label{
+	font-size: 18px;
+	background: #363636;
+	padding: 12px 16px;
+	color: #fff;
+	border-radius: 6px;
+	display: block;
+	/*width: auto !important;*/
+	/*display: inline !important;*/
+}
+#game .game-form #conjugation{
+	/*display: inline !important;*/
+	margin-bottom: 5px;
+}
+
+#game .answer{
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	border-radius: 6px;	
+	color: #fff;
+	padding: 10px 16px;
+}
+
+#game .correct{
+	background: #449d44;
+}
+#game .incorrect{
+	background: #d9534f;
+}
+
+#messages{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100%;
+	padding: 0;
+}
+	#messages p{
+		margin:0; padding: 0;
+	}
+	#messages .message i{
+		margin-right: 10px;
+	}
+	#messages .message{
+		margin: 0;
+		padding: 10px 20px;
+		color: #fff;
+		width: 100%;
+		display: block;
+	}
+	#messages .message-info{
+		background: #363636;
+	}
+	#messages .message-error{
+		background: #d9534f;
+	}
