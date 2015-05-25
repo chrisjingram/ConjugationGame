@@ -1,20 +1,29 @@
-$(function(){
+var verbsObj;
 
-	changeVerb();
+$(function(){
 
 	$("#game .answer").hide();
 
-	$("#gamecheck").click(function(e){
-		e.preventDefault();
-		var infinitive = $("#game #infinitive").text();
-		var type = $("#game #conjugationtype").attr("rel");
-		var conj = $("#game #conjugation").val();
-		checkAnswer(infinitive,type,conj.toLowerCase(),function(result){
+	$.get('/getverbs',function(result){
+		
+		verbsObj = result;
+
+		changeVerb();
+
+		$("#gamecheck").click(function(e){
+			e.preventDefault();
+			var infinitive = $("#game #infinitive").text();
+			var type = $("#game #conjugationtype").attr("rel");
+			var conj = $("#game #conjugation").val();
+
+			var answer = checkAnswer(infinitive,type,conj.toLowerCase());
+
 			var highestTimeoutId = setTimeout(";");
 			for (var i = 0 ; i < highestTimeoutId ; i++) {
 			    clearTimeout(i); 
 			}
-			if(result == true){
+
+			if(answer == true){
 				$("#game .answer").hide();
 				var correct = $("#game .correct");
 				correct.show();
@@ -31,9 +40,12 @@ $(function(){
 					incorrect.fadeOut();
 				},5000);
 			}
-			
+
 		});
-	})
+
+	});
+
+	
 
 
 });
@@ -48,14 +60,11 @@ var displayType = {
 }
 
 function changeVerb(){
-	$.get('/getverbs',function(verbsObj){
+
 		var verbs = Object.keys(verbsObj);
 		var length = verbs.length;
 
-		console.log(verbs);
-
 		var verbIndex = Math.floor(Math.random() * length);
-		console.log(verbs[verbIndex]);
 
 		var verb = verbs[verbIndex];
 
@@ -68,19 +77,12 @@ function changeVerb(){
 
 		$("#game .game-form").trigger("reset");
 
- 	});
 }
 
 function checkAnswer(infinitive,type,conj,callback){
-
-	$.get('/getverbs',function(verbsObj){
-		if(conj == verbsObj[infinitive][type]){
-			console.log(true);
-			callback(true);
-		}else{
-			console.log(false);
-			callback(false);
-		}
-	});
-
+	if(conj == verbsObj[infinitive][type]){
+		return true;
+	}else{
+		return false;
+	}
 }
